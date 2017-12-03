@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FixingTool : MonoBehaviour {
 
+    public bool Usable { get; set; }
+
     private Transform       m_transform;
     private BoxCollider2D   m_currentCollider;
     private ToolType        m_currentTool;
@@ -38,14 +40,23 @@ public class FixingTool : MonoBehaviour {
 
     private void Update()
     {
-        m_transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
+        if (Usable)
+        {
+            m_transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            m_toolAnimator.SetBool("InUse", true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                m_toolAnimator.SetBool("InUse", true);
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                m_toolAnimator.SetBool("InUse", false);
+            }
         }
-        else if (Input.GetMouseButtonUp(0))
+        else
         {
+            // This is just to be sure we set the animation off on the last
+            // clicked type cracks before desactivating the tool
             m_toolAnimator.SetBool("InUse", false);
         }
     }

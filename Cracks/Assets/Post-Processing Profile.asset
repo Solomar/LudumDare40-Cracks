@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Post-Processing Profile
   m_EditorClassIdentifier: 
   debugViews:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       depth:
@@ -25,7 +25,7 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       excludeSkybox: 1
   antialiasing:
@@ -69,7 +69,7 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       focusDistance: 10
       aperture: 5.6
@@ -77,11 +77,11 @@ MonoBehaviour:
       useCameraFov: 0
       kernelSize: 1
   motionBlur:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      shutterAngle: 270
+      shutterAngle: 280
       sampleCount: 10
-      frameBlending: 0
+      frameBlending: 0.4
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -113,16 +113,16 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.02
-        neutralWhiteIn: 10
+        neutralBlackIn: -0.0253
+        neutralWhiteIn: 10.89
         neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
+        neutralWhiteOut: 11.54
+        neutralWhiteLevel: 8.43
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 0
-        tint: 0
+        temperature: 32.5
+        tint: -57.3
         hueShift: 0
         saturation: 1
         contrast: 1
@@ -134,9 +134,9 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0, g: 0, b: 0, a: 0}
-          power: {r: 0, g: 0, b: 0, a: 0}
-          offset: {r: 0, g: 0, b: 0, a: 0}
+          slope: {r: 1, g: 1, b: 1, a: 0}
+          power: {r: 1, g: 1, b: 1, a: 0}
+          offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
-            m_RotationOrder: 4
+            m_RotationOrder: 0
           m_Loop: 0
           m_ZeroValue: 0
           m_Range: 1
@@ -286,21 +286,21 @@ MonoBehaviour:
       spectralTexture: {fileID: 0}
       intensity: 0.1
   grain:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.5
-      size: 1
-      luminanceContribution: 0.8
+      intensity: 0.47
+      size: 1.2
+      luminanceContribution: 0.662
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0, g: 0, b: 0, a: 1}
+      color: {r: 0.5735294, g: 0.5735294, b: 0.5735294, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
-      smoothness: 0.2
-      roundness: 1
+      intensity: 0.444
+      smoothness: 0.335
+      roundness: 0.79
       mask: {fileID: 0}
       opacity: 1
       rounded: 0
