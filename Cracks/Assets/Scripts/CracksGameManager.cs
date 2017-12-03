@@ -57,18 +57,21 @@ public class CracksGameManager : MonoBehaviour
     private IEnumerator GoToNextArea()
     {
         m_fixingTool.Usable = false;
-        m_fixingTool.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position, 0.5f).SetEase(Ease.InExpo);
+        m_fixingTool.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position, 0.3f).SetEase(Ease.InExpo);
 
         // Next Message For Completion Here
         yield return new WaitForSeconds(0.25f);
 
         // Change tool heere
 
-        m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 1.0f).SetEase(Ease.InOutBounce).OnComplete(MovemenToNextAreaComplete);
+        // Reactivate blur for camera movement
+        m_postProfile.motionBlur.enabled = true;
+        m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 0.4f).SetEase(Ease.OutSine).OnComplete(MovemenToNextAreaComplete);
     }
 
     private void MovemenToNextAreaComplete()
     {
+        m_postProfile.motionBlur.enabled = false;
         m_fixingTool.Usable = true;
         m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
         // Next Message For Start Here
