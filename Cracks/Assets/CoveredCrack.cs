@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoveredCrack : MonoBehaviour {
 
-    public struct BoundedCrackSegment
+    public class BoundedCrackSegment
     {
         public bool m_covered;
         public Collider2D m_segmentCollider;
@@ -18,11 +18,12 @@ public class CoveredCrack : MonoBehaviour {
     {
         foreach (Collider2D crackCollider in GetComponents<Collider2D>())
         {
-            var newSegment = new BoundedCrackSegment();
+            BoundedCrackSegment newSegment = new BoundedCrackSegment();
             newSegment.m_covered = false;
             newSegment.m_segmentCollider = crackCollider;
             m_boundedCracks.Add(newSegment);
         }
+        Debug.Log(m_boundedCracks.Count);
     }
 
     void Update()

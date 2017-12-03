@@ -11,6 +11,8 @@ public class FixingTool : MonoBehaviour {
     private ToolType        m_currentTool;
     private Animator        m_toolAnimator;
     private List<GameObject> m_collidingGameObjects = new List<GameObject>();
+    private GameObject      m_currentAddedItem; // This is to keep reference of composite colliders and line renderers
+                                                // of some of the items the tools could add
 
     public delegate void OnToolChange(ToolType type);
     public static OnToolChange toolChanged;
@@ -22,7 +24,7 @@ public class FixingTool : MonoBehaviour {
         m_transform = transform;
         m_toolAnimator = GetComponentInChildren<Animator>();
         GetComponentInChildren<AnimationEventHelper>().AddOnAnimationEvent(UseTool);
-        toolChanged(ToolType.HAMMER);
+        toolChanged(ToolType.HOTGLUE);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,13 +46,21 @@ public class FixingTool : MonoBehaviour {
         {
             m_transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,10);
 
-            if (Input.GetMouseButtonDown(0))
+            switch (m_currentTool)
             {
-                m_toolAnimator.SetBool("InUse", true);
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                m_toolAnimator.SetBool("InUse", false);
+                case ToolType.HAMMER:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        m_toolAnimator.SetBool("InUse", true);
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        m_toolAnimator.SetBool("InUse", false);
+                    }
+                    break;
+                case ToolType.HOTGLUE:
+                    UseTool();
+                    break;
             }
         }
         else
@@ -99,6 +109,12 @@ public class FixingTool : MonoBehaviour {
 
                     if (objectFound)
                         closestObject.GetComponent<Crack>().IncrementProgression();
+                }
+                break;
+            case ToolType.HOTGLUE:
+
+                if (m_collidingGameObjects.Count > 0)
+                {
                 }
                 break;
         }

@@ -13,6 +13,7 @@ public class CracksGameManager : MonoBehaviour
     private FixingTool      m_fixingTool;
     private Transform       m_mainCameraTransform;
     private int             m_currentCrackAreaIndex;
+    [SerializeField]
     private List<CrackArea> m_allCrackArea = new List<CrackArea>();
 
     private UnityEngine.PostProcessing.PostProcessingProfile m_postProfile;
@@ -20,7 +21,7 @@ public class CracksGameManager : MonoBehaviour
     private void Start()
     {
         // Initializing everything needed
-        GetComponentsInChildren<CrackArea>(m_allCrackArea);
+        // GetComponentsInChildren<CrackArea>(m_allCrackArea);
         m_fixingTool = FindObjectOfType<FixingTool>();
         m_fixingTool.Usable = true;
 
