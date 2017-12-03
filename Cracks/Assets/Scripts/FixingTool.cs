@@ -20,7 +20,6 @@ public class FixingTool : MonoBehaviour {
         m_transform = transform;
         m_toolAnimator = GetComponentInChildren<Animator>();
         GetComponentInChildren<AnimationEventHelper>().AddOnAnimationEvent(UseTool);
-
         toolChanged(ToolType.HAMMER);
     }
 
@@ -64,24 +63,31 @@ public class FixingTool : MonoBehaviour {
 
     public void UseTool()
     {
-        Debug.Log("Tool Used");
         switch (m_currentTool)
         {
             case ToolType.HAMMER:
                 if(m_collidingGameObjects.Count > 0)
                 {
+                    bool objectFound = false;
                     float closestDistance = float.MaxValue;
-                    GameObject closestObject; 
+                    GameObject closestObject = m_collidingGameObjects[0];
+
                     foreach(GameObject go in m_collidingGameObjects)
                     {
-                        float distance = Vector2.Distance(go.transform.position, m_currentCollider.bounds.center);
-                        if (distance < closestDistance)
-                        {
-                            closestDistance = distance;
-                            closestObject = go;
+                        if(go.GetComponent<Crack>().Active)
+                        { 
+                            float distance = Vector2.Distance(go.transform.position, m_currentCollider.bounds.center);
+                            if (distance < closestDistance)
+                            {
+                                closestDistance = distance;
+                                closestObject = go;
+                                objectFound = true;
+                            }
                         }
-                        go.GetComponent<Crack>();
                     }
+
+                    if (objectFound)
+                        closestObject.GetComponent<Crack>().IncrementProgression();
                 }
                 break;
         }

@@ -17,4 +17,15 @@ public class CrackArea : MonoBehaviour
         foreach (Crack crack in m_areaCracks)
             crack.Active = true;
     }
+
+    public void FixedCrack()
+    {
+        foreach(Crack crack in m_areaCracks)
+        {
+            if (crack.Active)
+                return;
+        }
+
+        CracksGameManager.CrackCompleted = true;
+    }
 }

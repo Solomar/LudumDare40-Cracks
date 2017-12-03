@@ -17,11 +17,15 @@ public class Crack : MonoBehaviour
     [SerializeField]
     private CrackType m_crackType;
 
-    private SpriteRenderer m_spriteRenderer;
+    private SpriteRenderer  m_spriteRenderer;
+    private BoxCollider2D   m_collider;
+    private CrackArea       m_belongingArea;
 
     private void Start()
     {
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_collider = GetComponent<BoxCollider2D>();
+        m_belongingArea = GetComponentInParent<CrackArea>();
         m_spriteRenderer.sprite = m_baseSprite;
     }
 
@@ -39,6 +43,15 @@ public class Crack : MonoBehaviour
 
     private void ChangeProgressionSprite()
     {
+        m_spriteRenderer.sprite = m_progressionSprites[(int)(m_progression / (1.0f / (float)m_progressionSprites.Length))];
+        m_collider.size = m_spriteRenderer.sprite.bounds.size;
 
+        if ((int)(m_progression / (1.0f / (float)m_progressionSprites.Length)) == (m_progressionSprites.Length - 1))
+        {
+            Active = false;
+            Destroy(m_collider);
+            m_belongingArea.FixedCrack();
+        }
+        
     } 
 }
