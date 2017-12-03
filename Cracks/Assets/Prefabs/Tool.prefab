@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4757076765838626}
   - component: {fileID: 212910568187723496}
   - component: {fileID: 95995470586820098}
+  - component: {fileID: 114031055650872146}
   m_Layer: 0
   m_Name: ToolSpriteRenderer
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891982368533184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: -0.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4757076765838626}
@@ -144,6 +145,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114031055650872146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757285398696376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff4953e324112d45a7df54b1e306345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114411606369803284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,10 +175,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1702341260013464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00612f390372be7429650032162a6af6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d08f697f3116694e982414c2bb3dfbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_toolType: 1
+  m_toolType: 0
 --- !u!212 &212910568187723496
 SpriteRenderer:
   m_ObjectHideFlags: 1

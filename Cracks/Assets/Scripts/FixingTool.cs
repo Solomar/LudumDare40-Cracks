@@ -19,6 +19,7 @@ public class FixingTool : MonoBehaviour {
     {
         m_transform = transform;
         m_toolAnimator = GetComponentInChildren<Animator>();
+        GetComponentInChildren<AnimationEventHelper>().AddOnAnimationEvent(UseTool);
 
         toolChanged(ToolType.HAMMER);
     }
