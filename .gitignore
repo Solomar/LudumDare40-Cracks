@@ -1,0 +1,13 @@
+*.ase
+Cracks/Library/
+Cracks/Assets/DOTween/
+Cracks/Assets/Fungus/
+Cracks/Assets/FungusExamples/
+Cracks/Assets/TextMesh Pro/
+Cracks/Temp/
+*.csproj
+*.sln
+Cracks/Assets/DOTween.meta
+Cracks/Assets/TextMesh Pro.meta
+Cracks/Assets/FungusExamples.meta
+Cracks/Assets/Fungus.meta
