@@ -85,7 +85,7 @@ public class FixingTool : MonoBehaviour {
 
                     foreach(GameObject go in m_collidingGameObjects)
                     {
-                        if(go.GetComponent<Crack>().Active)
+                        if(go.GetComponent<Crack>().m_active)
                         { 
                             float distance = Vector2.Distance(go.transform.position, m_currentCollider.bounds.center);
                             if (distance < closestDistance)

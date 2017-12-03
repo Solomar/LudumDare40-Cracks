@@ -15,14 +15,14 @@ public class CrackArea : MonoBehaviour
     public void ActivateCrackInArea()
     {
         foreach (Crack crack in m_areaCracks)
-            crack.Active = true;
+            crack.m_active = true;
     }
 
     public void FixedCrack()
     {
         foreach(Crack crack in m_areaCracks)
         {
-            if (crack.Active)
+            if (crack.m_active)
                 return;
         }
 

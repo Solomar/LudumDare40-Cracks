@@ -6,7 +6,7 @@ public class Crack : MonoBehaviour
 {
     public enum CrackType { CLICKED, COVERED, PARTIALLY_COVERED }
 
-    public bool     Active { get; set; } // Is in the active crack area
+    public bool     m_active; // Is in the active crack area
     public bool     m_spriteChange;
     public float    m_progression;
 
@@ -17,16 +17,23 @@ public class Crack : MonoBehaviour
     [SerializeField]
     private CrackType m_crackType;
 
-    private SpriteRenderer  m_spriteRenderer;
-    private BoxCollider2D   m_collider;
-    private CrackArea       m_belongingArea;
+    // m_collider is used for the simple clicks 
+    // and m_crackColliders for the covered cracks
+    private SpriteRenderer      m_spriteRenderer;
+    private BoxCollider2D       m_collider;
+    private List<Collider2D>    m_crackColliders;
+    private CrackArea           m_belongingArea;
 
     private void Start()
     {
-        m_spriteRenderer = GetComponent<SpriteRenderer>();
-        m_collider = GetComponent<BoxCollider2D>();
-        m_belongingArea = GetComponentInParent<CrackArea>();
+        m_spriteRenderer    = GetComponent<SpriteRenderer>();
+        m_belongingArea     = GetComponentInParent<CrackArea>();
         m_spriteRenderer.sprite = m_baseSprite;
+
+        if (m_crackType == CrackType.CLICKED)
+            m_collider = GetComponent<BoxCollider2D>();
+        else
+            gameObject.AddComponent<CoveredCrack>();
     }
 
     public void IncrementProgression()
@@ -48,7 +55,7 @@ public class Crack : MonoBehaviour
 
         if ((int)(m_progression / (1.0f / (float)m_progressionSprites.Length)) == (m_progressionSprites.Length - 1))
         {
-            Active = false;
+            m_active = false;
             Destroy(m_collider);
             m_belongingArea.FixedCrack();
         }
