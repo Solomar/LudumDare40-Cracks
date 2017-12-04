@@ -152,16 +152,6 @@ Prefab:
       propertyPath: dialogueTextMeshPro
       value: 
       objectReference: {fileID: 1621794959}
-    - target: {fileID: 114990680896874476, guid: a7cb36ddb84933242bb53429c510e8de,
-        type: 2}
-      propertyPath: allSounds.Array.data[0].baseVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114990680896874476, guid: a7cb36ddb84933242bb53429c510e8de,
-        type: 2}
-      propertyPath: allSounds.Array.data[0].basePitch
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7cb36ddb84933242bb53429c510e8de, type: 2}
   m_IsPrefabParent: 0
@@ -174,11 +164,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4947060546776212, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.338
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 4947060546776212, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.728
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4947060546776212, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -204,61 +194,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1187326192708196, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577805263792172, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23129543380234904, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 21028919157805804, guid: 1e84ba95b7c0f2446969906fbb7288d0,
-        type: 2}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
-        type: 2}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 1e84ba95b7c0f2446969906fbb7288d0,
-        type: 2}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
+    - target: {fileID: 114491033926567644, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
         type: 2}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 21028919157805804, guid: 1e84ba95b7c0f2446969906fbb7288d0,
+      objectReference: {fileID: 0}
+    - target: {fileID: 23845853153529506, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
         type: 2}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 33048635049755768, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
         type: 2}
-      propertyPath: m_fontColor.r
-      value: 0.14705884
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 33462470494874998, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
         type: 2}
-      propertyPath: m_fontColor.g
-      value: 0.14139126
+      propertyPath: m_havePropertiesChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
         type: 2}
-      propertyPath: m_fontColor.b
-      value: 0.12651385
-      objectReference: {fileID: 0}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
-        type: 2}
-      propertyPath: m_fontColor32.rgba
-      value: 4280296485
-      objectReference: {fileID: 0}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
-        type: 2}
-      propertyPath: m_text
-      value: adfgsdfg
-      objectReference: {fileID: 0}
-    - target: {fileID: 114376255832954234, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
-        type: 2}
-      propertyPath: m_textInfo.characterCount
-      value: 8
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
@@ -307,45 +271,6 @@ Prefab:
     - target: {fileID: 4820152557768514, guid: aac457267f983f743be96db23aaf47b0, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 61389724669401070, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0.0031945705
-      objectReference: {fileID: 0}
-    - target: {fileID: 61389724669401070, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.33843088
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903598314382834, guid: aac457267f983f743be96db23aaf47b0, type: 2}
-      propertyPath: m_Name
-      value: WandCollider
-      objectReference: {fileID: 0}
-    - target: {fileID: 114382272563339088, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_toolType
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 61750078716018912, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0.24495459
-      objectReference: {fileID: 0}
-    - target: {fileID: 61750078716018912, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.3241788
-      objectReference: {fileID: 0}
-    - target: {fileID: 61750078716018912, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: -0.007115066
-      objectReference: {fileID: 0}
-    - target: {fileID: 61750078716018912, guid: aac457267f983f743be96db23aaf47b0,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.48376524
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aac457267f983f743be96db23aaf47b0, type: 2}

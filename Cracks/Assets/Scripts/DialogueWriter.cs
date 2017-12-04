@@ -39,7 +39,7 @@ public class DialogueWriter : MonoBehaviour {
 
         _timeWaitedTilNextCharacter = 0.0f;
         _writerIndex = 0;
-        _doneWriting = false;
+        _doneWriting = (newTextToWrite == string.Empty); // Only set done writing to false if the new text isn't empty.
 
         ClearCurrentText();
     }

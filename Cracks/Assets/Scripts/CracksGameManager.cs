@@ -20,6 +20,7 @@ public class CracksGameManager : MonoBehaviour
 
     private UnityEngine.PostProcessing.PostProcessingProfile m_postProfile;
     private DialogueWriter m_dialogueWriter;
+    private bool m_continue;
 
     private void Start()
     {
@@ -52,6 +53,13 @@ public class CracksGameManager : MonoBehaviour
                     StartCoroutine(Beginning());
                     break;
                 case GameState.MIDDLE:
+                    if(!m_continue)
+                    {
+                        if (m_dialogueWriter.DoneWriting)
+                            m_continue = true;
+                        else
+                            m_dialogueWriter.FinishWritingEarly();
+                    }
                     break;
                 case GameState.END:
                     break;
@@ -76,13 +84,24 @@ public class CracksGameManager : MonoBehaviour
 
     private IEnumerator Beginning()
     {
+
         m_currentState = GameState.MIDDLE;
         m_dialogueWriter.SetNewText("Oh good! I needed a helping hand.", 0);
 
-        while(!m_dialogueWriter.DoneWriting)
-        { yield return new WaitForEndOfFrame(); }
+        do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
+
+        m_dialogueWriter.SetNewText("This complex infrastructure needs some maintenance", 0);
+
+        do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
+
+        m_dialogueWriter.SetNewText("", 0);
 
         StartCoroutine(GoToNextArea());
+    }
+
+    private IEnumerator End()
+    {
+        do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
     }
 
     private IEnumerator GoToNextArea()
@@ -93,8 +112,8 @@ public class CracksGameManager : MonoBehaviour
         // Next Message For Completion Here
         yield return new WaitForSeconds(0.25f);
 
-        // Change tool heere
-
+        // Change tool here
+        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
         // Reactivate blur for camera movement
         m_postProfile.motionBlur.enabled = true;
         m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 0.4f).SetEase(Ease.OutSine).OnComplete(MovementToNextAreaComplete);
@@ -102,11 +121,25 @@ public class CracksGameManager : MonoBehaviour
 
     private void MovementToNextAreaComplete()
     {
-        //m_postProfile.motionBlur.enabled = false;
+        StartCoroutine(StartArea());
         m_fixingTool.Usable = true;
         m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
         m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
 
         // Next Message For Start Here
+    }
+
+    private IEnumerator StartArea()
+    {
+
+        foreach (string line in m_allCrackArea[m_currentCrackAreaIndex].m_areaStartTexts)
+        {
+            do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
+        }
+    }
+
+    private IEnumerator DialogueWait()
+    {
+        do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
     }
 }

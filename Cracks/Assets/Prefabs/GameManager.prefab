@@ -2825,8 +2825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 4
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114063537867941002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2840,8 +2840,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114078420134936232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2893,8 +2893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114153464158771576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3063,8 +3063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 3
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114264560791669434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3116,8 +3116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 4
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114322366572241164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3152,8 +3152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114381872329173824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3188,8 +3188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 2
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114403438484202802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3203,8 +3203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 2
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114450586817694972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3301,8 +3301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 3
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114614663429105182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3316,8 +3316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114618111108530918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3352,8 +3352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 1
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114661637661596076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3464,13 +3464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_allCrackArea:
   - {fileID: 114868659754962276}
-  - {fileID: 114139524597350520}
+  - {fileID: 114403438484202802}
   - {fileID: 114063537867941002}
   - {fileID: 114403438484202802}
-  - {fileID: 114921185261381688}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114843163667496512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3522,8 +3518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: You should be able to hammer these down
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114870400347705958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3554,8 +3550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 5
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114944756294659024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3590,8 +3586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartText: 
-  m_areaEndText: 
+  m_areaStartTexts: []
+  m_areaEndTexts: []
 --- !u!114 &114990680896874476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3608,7 +3604,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: dac5098435d34824a8d40f7546a0bf39, type: 3}
     baseVolume: 1
     basePitch: 1
-    overlapAllowed: 0
+    overlapAllowed: 1
     loop: 0
 --- !u!212 &212001884226660858
 SpriteRenderer:
