@@ -7,6 +7,7 @@ public class FixingTool : MonoBehaviour {
     public bool Usable { get; set; }
 
     private Transform       m_transform;
+    private SpriteRenderer  m_spriteRenderer;
     private BoxCollider2D   m_currentCollider;
     private ToolType        m_currentTool;
     private Animator        m_toolAnimator;
@@ -22,6 +23,19 @@ public class FixingTool : MonoBehaviour {
     [SerializeField]
     private GameObject m_duckTape;
 
+    [SerializeField]
+    private Sprite m_hammerSprite;
+    [SerializeField]
+    private Sprite m_caulkingGunSprite;
+    [SerializeField]
+    private Sprite m_plasterSpreaderSprite;
+    [SerializeField]
+    private Sprite m_ducktapeSprite;
+    [SerializeField]
+    private Sprite m_handSprite;
+    [SerializeField]
+    private Sprite m_wandSprite;
+
     public delegate void OnToolChange(ToolType type);
     public static OnToolChange toolChanged;
     public static void AddOnToolChangeFunction(OnToolChange function)       { toolChanged += function; }
@@ -30,6 +44,7 @@ public class FixingTool : MonoBehaviour {
     private void Start()
     {
         m_transform = transform;
+        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_toolAnimator = GetComponentInChildren<Animator>();
         GetComponentInChildren<AnimationEventHelper>().AddOnAnimationEvent(UseTool);
         toolChanged(ToolType.HOTGLUE);
@@ -66,6 +81,13 @@ public class FixingTool : MonoBehaviour {
                         m_toolAnimator.SetBool("InUse", false);
                     }
                     break;
+                case ToolType.HAND:
+                case ToolType.MAGICWAND:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        UseTool();
+                    }
+                    break;
                 case ToolType.HOTGLUE:
                 case ToolType.PLASTER:
                 case ToolType.DUCKTAPE:
@@ -96,6 +118,27 @@ public class FixingTool : MonoBehaviour {
     public void SwitchTool(ToolType tool)
     {
         m_currentTool = tool;
+        switch(tool)
+        {
+            case ToolType.HAMMER:
+                m_spriteRenderer.sprite = m_hammerSprite;
+                break;
+            case ToolType.HAND:
+                m_spriteRenderer.sprite = m_handSprite;
+                break;
+            case ToolType.MAGICWAND:
+                m_spriteRenderer.sprite = m_wandSprite;
+                break;
+            case ToolType.HOTGLUE:
+                m_spriteRenderer.sprite = m_caulkingGunSprite;
+                break;
+            case ToolType.DUCKTAPE:
+                m_spriteRenderer.sprite = m_ducktapeSprite;
+                break;
+            case ToolType.PLASTER:
+                m_spriteRenderer.sprite = m_plasterSpreaderSprite;
+                break;
+        }
         toolChanged(tool);
     }
 
@@ -109,7 +152,9 @@ public class FixingTool : MonoBehaviour {
         switch (m_currentTool)
         {
             case ToolType.HAMMER:
-                if(m_collidingGameObjects.Count > 0)
+            case ToolType.MAGICWAND:
+            case ToolType.HAND:
+                if (m_collidingGameObjects.Count > 0)
                 {
                     bool objectFound = false;
                     float closestDistance = float.MaxValue;

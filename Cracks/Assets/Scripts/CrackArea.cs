@@ -6,8 +6,10 @@ public class CrackArea : MonoBehaviour
 {
     public ToolType m_areaTool;
     public List<Crack> m_areaCracks = new List<Crack>();
-    
-    private void Start()
+    public string m_areaStartText;
+    public string m_areaEndText;
+
+    private void Awake()
     {
         GetComponentsInChildren<Crack>(m_areaCracks);
     }

@@ -49,3 +49,6 @@ TagManager:
   - name: Tools
     uniqueID: 2559733037
     locked: 0
+  - name: NarrativeText
+    uniqueID: 2209617775
+    locked: 0

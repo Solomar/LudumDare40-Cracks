@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 public enum ToolType { HAMMER, HAND, HOTGLUE, PLASTER, DUCKTAPE, MAGICWAND }
+public enum GameState { START, MIDDLE, END }
 
 public class CracksGameManager : MonoBehaviour
 {
     public static bool CrackCompleted { get; set; }
 
+    private GameState       m_currentState;
     private FixingTool      m_fixingTool;
     private Transform       m_mainCameraTransform;
     private int             m_currentCrackAreaIndex;
@@ -17,13 +19,18 @@ public class CracksGameManager : MonoBehaviour
     private List<CrackArea> m_allCrackArea = new List<CrackArea>();
 
     private UnityEngine.PostProcessing.PostProcessingProfile m_postProfile;
+    private DialogueWriter m_dialogueWriter;
 
     private void Start()
     {
+        // Starting the game from the title/start menu
+        m_currentState = GameState.START;
+        m_dialogueWriter = GetComponent<DialogueWriter>();
+        m_mainCameraTransform = Camera.main.transform;
+
         // Initializing everything needed
         // GetComponentsInChildren<CrackArea>(m_allCrackArea);
         m_fixingTool = FindObjectOfType<FixingTool>();
-        m_fixingTool.Usable = true;
 
         // Instantiating post process profile to modify it at runtime
         // in case it's not yet fully optimal like described here
@@ -31,15 +38,25 @@ public class CracksGameManager : MonoBehaviour
         var postBehavior = FindObjectOfType<UnityEngine.PostProcessing.PostProcessingBehaviour>();
         m_postProfile = Instantiate(postBehavior.profile);
         postBehavior.profile = m_postProfile;
-        m_postProfile.motionBlur.enabled = false;
+        //m_postProfile.motionBlur.enabled = false;
 
-        m_mainCameraTransform = Camera.main.transform;
-        m_mainCameraTransform.position = m_allCrackArea[0].transform.position + new Vector3(0,0, -10);
-        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
+    }
 
-        // Temporary activation for dbug purposes
-        m_allCrackArea[0].ActivateCrackInArea();
-
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            switch (m_currentState)
+            {
+                case GameState.START:
+                    StartCoroutine(Beginning());
+                    break;
+                case GameState.MIDDLE:
+                    break;
+                case GameState.END:
+                    break;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -57,6 +74,17 @@ public class CracksGameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator Beginning()
+    {
+        m_currentState = GameState.MIDDLE;
+        m_dialogueWriter.SetNewText("Oh good! I needed a helping hand.", 0);
+
+        while(!m_dialogueWriter.DoneWriting)
+        { yield return new WaitForEndOfFrame(); }
+
+        StartCoroutine(GoToNextArea());
+    }
+
     private IEnumerator GoToNextArea()
     {
         m_fixingTool.Usable = false;
@@ -69,12 +97,12 @@ public class CracksGameManager : MonoBehaviour
 
         // Reactivate blur for camera movement
         m_postProfile.motionBlur.enabled = true;
-        m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 0.4f).SetEase(Ease.OutSine).OnComplete(MovemenToNextAreaComplete);
+        m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 0.4f).SetEase(Ease.OutSine).OnComplete(MovementToNextAreaComplete);
     }
 
-    private void MovemenToNextAreaComplete()
+    private void MovementToNextAreaComplete()
     {
-        m_postProfile.motionBlur.enabled = false;
+        //m_postProfile.motionBlur.enabled = false;
         m_fixingTool.Usable = true;
         m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
         m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
