@@ -11,8 +11,8 @@ public class CoveredCrack : MonoBehaviour {
     }
 
     public List<BoundedCrackSegment> m_boundedCracks = new List<BoundedCrackSegment>();
-    public List<Collider2D>     m_coverColliders = new List<Collider2D>();
-    public float                m_coverPercentage;
+    public List<Collider2D>          m_coverColliders = new List<Collider2D>();
+    public float                     m_coverPercentage;
 
     private void Start()
     {
@@ -24,6 +24,13 @@ public class CoveredCrack : MonoBehaviour {
             m_boundedCracks.Add(newSegment);
         }
         Debug.Log(m_boundedCracks.Count);
+    }
+
+    public void AddCoverCollider(Collider2D newCoverCollider)
+    {
+        // Want to avoid adding it more than once
+        if(!m_coverColliders.Contains(newCoverCollider))
+            m_coverColliders.Add(newCoverCollider);
     }
 
     void Update()
@@ -56,7 +63,9 @@ public class CoveredCrack : MonoBehaviour {
                 if (segment.m_covered)
                     coveredCrackCount++;
             }
-            m_coverPercentage = (float)m_boundedCracks.Count / (float)coveredCrackCount;
+
+            m_coverPercentage = (float)coveredCrackCount / (float)m_boundedCracks.Count;
+
             Debug.Log(m_coverPercentage);
         }
     }

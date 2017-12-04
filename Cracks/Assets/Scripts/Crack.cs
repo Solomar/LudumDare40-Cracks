@@ -21,6 +21,7 @@ public class Crack : MonoBehaviour
     // and m_crackColliders for the covered cracks
     private SpriteRenderer      m_spriteRenderer;
     private BoxCollider2D       m_collider;
+    private CoveredCrack        m_coveredCrack;
     private List<Collider2D>    m_crackColliders;
     private CrackArea           m_belongingArea;
 
@@ -33,7 +34,7 @@ public class Crack : MonoBehaviour
         if (m_crackType == CrackType.CLICKED)
             m_collider = GetComponent<BoxCollider2D>();
         else
-            gameObject.AddComponent<CoveredCrack>();
+            m_coveredCrack = gameObject.AddComponent<CoveredCrack>();
     }
 
     public void IncrementProgression()
@@ -45,7 +46,18 @@ public class Crack : MonoBehaviour
                 ChangeProgressionSprite();
                 break;
         }
+    }
 
+    private void Update()
+    {
+        if(m_active && m_crackType == CrackType.COVERED)
+        {
+            if (m_coveredCrack.m_coverPercentage >= 1.0f)
+            {
+                m_active = false;
+                m_belongingArea.FixedCrack();
+            }
+        }
     }
 
     private void ChangeProgressionSprite()
@@ -59,6 +71,5 @@ public class Crack : MonoBehaviour
             Destroy(m_collider);
             m_belongingArea.FixedCrack();
         }
-        
     } 
 }

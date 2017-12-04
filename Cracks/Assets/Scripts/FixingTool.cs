@@ -12,7 +12,15 @@ public class FixingTool : MonoBehaviour {
     private Animator        m_toolAnimator;
     private List<GameObject> m_collidingGameObjects = new List<GameObject>();
     private GameObject      m_currentAddedItem; // This is to keep reference of composite colliders and line renderers
-                                                // of some of the items the tools could add
+    private bool            m_addingItem;       // of some of the items the tools could add
+
+    // Created prefabs from tools
+    [SerializeField]
+    private GameObject m_caulkingObject;
+    [SerializeField]
+    private GameObject m_plasterObject;
+    [SerializeField]
+    private GameObject m_duckTape;
 
     public delegate void OnToolChange(ToolType type);
     public static OnToolChange toolChanged;
@@ -59,7 +67,19 @@ public class FixingTool : MonoBehaviour {
                     }
                     break;
                 case ToolType.HOTGLUE:
-                    UseTool();
+                case ToolType.PLASTER:
+                case ToolType.DUCKTAPE:
+                    if (Input.GetMouseButton(0))
+                    {
+                        UseTool();
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        m_currentAddedItem.GetComponent<CompositeColliderSpawner>().StopSpawningAndCompose();
+                        m_addingItem = false;
+                        m_currentAddedItem = null;
+                    }
+
                     break;
             }
         }
@@ -68,6 +88,8 @@ public class FixingTool : MonoBehaviour {
             // This is just to be sure we set the animation off on the last
             // clicked type cracks before desactivating the tool
             m_toolAnimator.SetBool("InUse", false);
+            m_addingItem = false;
+            m_currentAddedItem = null;
         }
     }
 
@@ -112,9 +134,37 @@ public class FixingTool : MonoBehaviour {
                 }
                 break;
             case ToolType.HOTGLUE:
+            case ToolType.PLASTER:
+            case ToolType.DUCKTAPE:
+                // This is the only difference between the tools are the instantiated objects
+                // Gameplay wise they do the same thing
+                if (m_addingItem)
+                {
+                    m_currentAddedItem.transform.position = m_transform.position;
+                }
+                else
+                {
+                    if(m_currentTool == ToolType.HOTGLUE)
+                        m_currentAddedItem = Instantiate(m_caulkingObject, m_transform.position, Quaternion.identity);
+                    else if (m_currentTool == ToolType.PLASTER)
+                        m_currentAddedItem = Instantiate(m_plasterObject, m_transform.position, Quaternion.identity);
+                    else if (m_currentTool == ToolType.DUCKTAPE)
+                        m_currentAddedItem = Instantiate(m_duckTape, m_transform.position, Quaternion.identity);
 
+                    m_addingItem = true;
+                }
+
+                // Just check if I need to add it every frame
+                // Not great but faster for me
                 if (m_collidingGameObjects.Count > 0)
                 {
+                    foreach (GameObject go in m_collidingGameObjects)
+                    {
+                        if (go.GetComponent<Crack>().m_active)
+                        {
+                            go.GetComponent<CoveredCrack>().AddCoverCollider(m_currentAddedItem.GetComponent<Collider2D>());
+                        }
+                    }
                 }
                 break;
         }

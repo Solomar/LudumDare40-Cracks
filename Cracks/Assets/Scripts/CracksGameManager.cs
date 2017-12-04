@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public enum ToolType { HAMMER, HAND, HOTGLUE }
+public enum ToolType { HAMMER, HAND, HOTGLUE, PLASTER, DUCKTAPE, MAGICWAND }
 
 public class CracksGameManager : MonoBehaviour
 {
@@ -35,9 +35,11 @@ public class CracksGameManager : MonoBehaviour
 
         m_mainCameraTransform = Camera.main.transform;
         m_mainCameraTransform.position = m_allCrackArea[0].transform.position + new Vector3(0,0, -10);
+        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
 
         // Temporary activation for dbug purposes
         m_allCrackArea[0].ActivateCrackInArea();
+
     }
 
     private void FixedUpdate()
@@ -74,7 +76,9 @@ public class CracksGameManager : MonoBehaviour
     {
         m_postProfile.motionBlur.enabled = false;
         m_fixingTool.Usable = true;
+        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
         m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
+
         // Next Message For Start Here
     }
 }
