@@ -15,6 +15,7 @@ public class CracksGameManager : MonoBehaviour
     private FixingTool      m_fixingTool;
     private Transform       m_mainCameraTransform;
     private int             m_currentCrackAreaIndex;
+    private AudioSource     m_audioSource;
     [SerializeField]
     private List<CrackArea> m_allCrackArea = new List<CrackArea>();
 
@@ -27,6 +28,7 @@ public class CracksGameManager : MonoBehaviour
         // Starting the game from the title/start menu
         m_currentState = GameState.START;
         m_dialogueWriter = GetComponent<DialogueWriter>();
+        m_audioSource = GetComponent<AudioSource>();
         m_mainCameraTransform = Camera.main.transform;
 
         // Initializing everything needed
@@ -50,6 +52,7 @@ public class CracksGameManager : MonoBehaviour
             switch (m_currentState)
             {
                 case GameState.START:
+                    StartCoroutine(StartMusic());
                     StartCoroutine(Beginning());
                     break;
                 case GameState.MIDDLE:
@@ -82,6 +85,19 @@ public class CracksGameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartMusic()
+    {
+        float volume = 0.0f;
+        m_audioSource.Play();
+        do
+        {
+            volume += 0.00025f;
+            m_audioSource.volume = volume;
+            yield return new WaitForEndOfFrame();
+        }
+        while (volume < 0.6f);
+    }
+
     private IEnumerator Beginning()
     {
 
@@ -96,7 +112,7 @@ public class CracksGameManager : MonoBehaviour
 
         m_dialogueWriter.SetNewText("", 0);
 
-        StartCoroutine(GoToNextArea());
+        StartCoroutine(GoToNextArea(true));
     }
 
     private IEnumerator End()
@@ -104,16 +120,26 @@ public class CracksGameManager : MonoBehaviour
         do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
     }
 
-    private IEnumerator GoToNextArea()
+    private IEnumerator GoToNextArea(bool beginning = false)
     {
         m_fixingTool.Usable = false;
         m_fixingTool.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position, 0.3f).SetEase(Ease.InExpo);
+
+        if (!beginning)
+        {
+            foreach (string line in m_allCrackArea[m_currentCrackAreaIndex - 1].m_areaEndTexts)
+            {
+                m_dialogueWriter.SetNewText(line, 0); m_continue = false;
+                do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
+            }
+            m_dialogueWriter.SetNewText("", 0);
+        }
 
         // Next Message For Completion Here
         yield return new WaitForSeconds(0.25f);
 
         // Change tool here
-        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
+        //m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
         // Reactivate blur for camera movement
         m_postProfile.motionBlur.enabled = true;
         m_mainCameraTransform.transform.DOMove(m_allCrackArea[m_currentCrackAreaIndex].transform.position + new Vector3(0, 0, -10), 0.4f).SetEase(Ease.OutSine).OnComplete(MovementToNextAreaComplete);
@@ -122,20 +148,24 @@ public class CracksGameManager : MonoBehaviour
     private void MovementToNextAreaComplete()
     {
         StartCoroutine(StartArea());
-        m_fixingTool.Usable = true;
-        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
-        m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
-
-        // Next Message For Start Here
+        //m_fixingTool.Usable = true;
+        //m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
+        //m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
     }
 
     private IEnumerator StartArea()
     {
-
         foreach (string line in m_allCrackArea[m_currentCrackAreaIndex].m_areaStartTexts)
         {
+            m_dialogueWriter.SetNewText(line, 0); m_continue = false;
             do { yield return new WaitForEndOfFrame(); } while (!m_continue); m_continue = false;
         }
+        m_dialogueWriter.SetNewText("", 0);
+
+        // Start area when dialogue is done..
+        m_fixingTool.Usable = true;
+        m_fixingTool.SwitchTool(m_allCrackArea[m_currentCrackAreaIndex].m_areaTool);
+        m_allCrackArea[m_currentCrackAreaIndex].ActivateCrackInArea();
     }
 
     private IEnumerator DialogueWait()

@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 4171552924819904}
   - component: {fileID: 114366524761432690}
   m_Layer: 0
-  m_Name: BumpArea_2
+  m_Name: BumpArea_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 114839634815527986}
   - component: {fileID: 114189063999626040}
   - component: {fileID: 114990680896874476}
+  - component: {fileID: 82624001298693742}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -670,7 +671,7 @@ GameObject:
   - component: {fileID: 4887413466614892}
   - component: {fileID: 114139524597350520}
   m_Layer: 0
-  m_Name: BumpArea_1
+  m_Name: BumpArea_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +951,7 @@ Transform:
   m_Children:
   - {fileID: 4066104074317912}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 7
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4100520102760672
 Transform:
@@ -1022,7 +1023,7 @@ Transform:
   - {fileID: 4517026787101076}
   - {fileID: 4473142416789810}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4176858420047532
 Transform:
@@ -1101,7 +1102,7 @@ Transform:
   m_Children:
   - {fileID: 4010133375784512}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4261748690152586
 Transform:
@@ -1158,7 +1159,7 @@ Transform:
   - {fileID: 4547795745629422}
   - {fileID: 4190450994684020}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4359861004014958
 Transform:
@@ -1172,7 +1173,7 @@ Transform:
   m_Children:
   - {fileID: 4100520102760672}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4416898237469158
 Transform:
@@ -1264,18 +1265,18 @@ Transform:
   m_Children:
   - {fileID: 4271547390567586}
   - {fileID: 4133054068666210}
-  - {fileID: 4887413466614892}
-  - {fileID: 4357768520706740}
   - {fileID: 4892672457365092}
   - {fileID: 4359861004014958}
-  - {fileID: 4963319077048180}
-  - {fileID: 4076618703221904}
-  - {fileID: 4994904764099802}
+  - {fileID: 4357768520706740}
   - {fileID: 4171552924819904}
+  - {fileID: 4887413466614892}
+  - {fileID: 4994904764099802}
   - {fileID: 4820289699034670}
   - {fileID: 4554089737904682}
   - {fileID: 4850099588409266}
   - {fileID: 4244368429350978}
+  - {fileID: 4963319077048180}
+  - {fileID: 4076618703221904}
   m_Father: {fileID: 4708887641239288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1331,7 +1332,7 @@ Transform:
   - {fileID: 4970773727787908}
   - {fileID: 4506564322393608}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4573462735188264
 Transform:
@@ -1413,7 +1414,7 @@ Transform:
   - {fileID: 4669774751194006}
   - {fileID: 4186221580040572}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4840905412744416
 Transform:
@@ -1441,7 +1442,7 @@ Transform:
   - {fileID: 4242031294814068}
   - {fileID: 4480489314712704}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4858334277009696
 Transform:
@@ -1474,7 +1475,7 @@ Transform:
   - {fileID: 4221515953022700}
   - {fileID: 4942925143801236}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4892672457365092
 Transform:
@@ -1488,7 +1489,7 @@ Transform:
   m_Children:
   - {fileID: 4963166472014156}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4930523180982814
 Transform:
@@ -1541,7 +1542,7 @@ Transform:
   m_Children:
   - {fileID: 4573462735188264}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4970773727787908
 Transform:
@@ -1569,7 +1570,7 @@ Transform:
   - {fileID: 4176858420047532}
   - {fileID: 4529553825625404}
   m_Father: {fileID: 4523103903266072}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &58070931896658992
 CircleCollider2D:
@@ -2699,6 +2700,86 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.48584813, y: 0.9377416}
   - {x: -0.46529007, y: 0.006698862}
+--- !u!82 &82624001298693742
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360453034642916}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 42dd1608e8839f441a3b9e415c17d730, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114008512078426494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2825,8 +2906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 4
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - Here's some tape.
+  m_areaEndTexts:
+  - I'll have to deal with these later.
 --- !u!114 &114063537867941002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2840,7 +2923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
+  m_areaStartTexts:
+  - This one looks completely different from the rest.
+  - Almost like if it was a placeholder made before everything else.
   m_areaEndTexts: []
 --- !u!114 &114078420134936232
 MonoBehaviour:
@@ -2893,8 +2978,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - No one is going to be able to get near.
+  m_areaEndTexts:
+  - Good! That's all of them. Back to the cracks.
 --- !u!114 &114153464158771576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3116,7 +3203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 4
   m_areaCracks: []
-  m_areaStartTexts: []
+  m_areaStartTexts:
+  - It's the best we can do for now.
+  - And that's okay.
   m_areaEndTexts: []
 --- !u!114 &114322366572241164
 MonoBehaviour:
@@ -3152,8 +3241,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - It's hard to build anything new upon these.
+  m_areaEndTexts:
+  - And if they just keep growing..
 --- !u!114 &114381872329173824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3188,8 +3279,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 2
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - I think I only have enough left in the caulk gun for these two.
+  m_areaEndTexts:
+  - I've got a limited amount of resources too.
+  - We'll have to patch the rest.
 --- !u!114 &114403438484202802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3203,8 +3297,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 2
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - Hmm.. this next one is pretty big.
+  - Here, use this instead.
+  m_areaEndTexts:
+  - That should do the trick for now.
 --- !u!114 &114450586817694972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3316,8 +3413,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - Glad I got someone to help with these.
+  - They just keep coming back.
+  m_areaEndTexts:
+  - It can get overwhelming.
 --- !u!114 &114618111108530918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3464,9 +3564,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_allCrackArea:
   - {fileID: 114868659754962276}
+  - {fileID: 114614663429105182}
   - {fileID: 114403438484202802}
   - {fileID: 114063537867941002}
-  - {fileID: 114403438484202802}
+  - {fileID: 114956916867822680}
+  - {fileID: 114366524761432690}
+  - {fileID: 114139524597350520}
+  - {fileID: 114387061055050826}
+  - {fileID: 114050720223712512}
+  - {fileID: 114283845853490538}
 --- !u!114 &114843163667496512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3518,8 +3624,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - These's cracks are rather small.
+  - You should be able to flatten the surface.
+  m_areaEndTexts:
+  - Smooth! But we're just starting.
 --- !u!114 &114870400347705958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3586,8 +3695,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_areaTool: 0
   m_areaCracks: []
-  m_areaStartTexts: []
-  m_areaEndTexts: []
+  m_areaStartTexts:
+  - Ah yes, these. They tend to appear with the cracks.
+  - They make the entire surface rugged.
+  m_areaEndTexts:
+  - They're probably trying to protect the structure but..
 --- !u!114 &114990680896874476
 MonoBehaviour:
   m_ObjectHideFlags: 1
