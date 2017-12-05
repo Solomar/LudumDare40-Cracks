@@ -16,6 +16,11 @@ public class ToolCollider : MonoBehaviour {
         FixingTool.AddOnToolChangeFunction(ToggleTool);
     }
 
+    private void OnDestroy()
+    {
+        FixingTool.RemoveOnToolChangeFunction(ToggleTool);
+    }
+
     private void ToggleTool(ToolType tool)
     {
         if (tool == m_toolType)

@@ -66,19 +66,19 @@ public class DialogueWriter : MonoBehaviour {
                 switch (_textToWrite[_writerIndex])
                 {
                     case ' ':
-                        _delayTilNextCharacter = 0.05f;
+                        _delayTilNextCharacter = 0.035f;
                         break;
                     case ',':
-                        _delayTilNextCharacter += 0.25f;
+                        _delayTilNextCharacter += 0.20f;
                         break;
                     case '!':
-                        _delayTilNextCharacter += 0.5f;
+                        _delayTilNextCharacter += 0.4f;
                         break;
                     case '?':
-                        _delayTilNextCharacter += 0.5f;
+                        _delayTilNextCharacter += 0.4f;
                         break;
                     case '.':
-                        _delayTilNextCharacter += 0.75f;
+                        _delayTilNextCharacter += 0.5f;
                         break;
                     default:
                         SoundManager._instance.PlaySound("Narrate");

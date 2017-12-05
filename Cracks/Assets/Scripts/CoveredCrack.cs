@@ -23,7 +23,6 @@ public class CoveredCrack : MonoBehaviour {
             newSegment.m_segmentCollider = crackCollider;
             m_boundedCracks.Add(newSegment);
         }
-        Debug.Log(m_boundedCracks.Count);
     }
 
     public void AddCoverCollider(Collider2D newCoverCollider)
@@ -65,8 +64,6 @@ public class CoveredCrack : MonoBehaviour {
             }
 
             m_coverPercentage = (float)coveredCrackCount / (float)m_boundedCracks.Count;
-
-            Debug.Log(m_coverPercentage);
         }
     }
 

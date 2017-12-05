@@ -52,3 +52,6 @@ TagManager:
   - name: NarrativeText
     uniqueID: 2209617775
     locked: 0
+  - name: Transitions
+    uniqueID: 2959218463
+    locked: 0
