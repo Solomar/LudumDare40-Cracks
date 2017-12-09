@@ -166,6 +166,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114189063999626040, guid: a7cb36ddb84933242bb53429c510e8de,
+        type: 2}
+      propertyPath: dialogueTextMeshPro
+      value: 
+      objectReference: {fileID: 1621794959}
     - target: {fileID: 114839634815527986, guid: a7cb36ddb84933242bb53429c510e8de,
         type: 2}
       propertyPath: m_narrationText
@@ -176,15 +181,6 @@ Prefab:
       propertyPath: m_titleText
       value: 
       objectReference: {fileID: 335825250}
-    - target: {fileID: 114189063999626040, guid: a7cb36ddb84933242bb53429c510e8de,
-        type: 2}
-      propertyPath: dialogueTextMeshPro
-      value: 
-      objectReference: {fileID: 1621794959}
-    - target: {fileID: 1770392836435748, guid: a7cb36ddb84933242bb53429c510e8de, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7cb36ddb84933242bb53429c510e8de, type: 2}
   m_IsPrefabParent: 0

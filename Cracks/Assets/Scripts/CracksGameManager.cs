@@ -33,6 +33,8 @@ public class CracksGameManager : MonoBehaviour
     
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         StartCoroutine(FadeOutTransition());
 
         // Starting the game from the title/start menu
