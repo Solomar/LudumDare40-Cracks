@@ -277,6 +277,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114999113929882720, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
+        type: 2}
+      propertyPath: m_text
+      value: Use the mouse to move the tools and the left mouse button to use them
+      objectReference: {fileID: 0}
+    - target: {fileID: 114999113929882720, guid: 9bd79f59c09b2bd4b9d97abc88c3286f,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 69
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bd79f59c09b2bd4b9d97abc88c3286f, type: 2}
   m_IsPrefabParent: 0

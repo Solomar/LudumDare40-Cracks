@@ -16,6 +16,8 @@ public class Crack : MonoBehaviour
     private Sprite[] m_progressionSprites;
     [SerializeField]
     private CrackType m_crackType;
+    [SerializeField]
+    private GameObject m_particleSystemOnProgression;
 
     // m_collider is used for the simple clicks 
     // and m_crackColliders for the covered cracks
@@ -64,6 +66,9 @@ public class Crack : MonoBehaviour
     {
         m_spriteRenderer.sprite = m_progressionSprites[(int)(m_progression / (1.0f / (float)m_progressionSprites.Length))];
         m_collider.size = m_spriteRenderer.sprite.bounds.size;
+
+        if (m_particleSystemOnProgression != null)
+            Instantiate(m_particleSystemOnProgression, transform.position, Quaternion.identity);
 
         if ((int)(m_progression / (1.0f / (float)m_progressionSprites.Length)) == (m_progressionSprites.Length - 1))
         {

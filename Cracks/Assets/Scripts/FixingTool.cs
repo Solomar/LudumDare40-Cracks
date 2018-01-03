@@ -33,8 +33,14 @@ public class FixingTool : MonoBehaviour {
     private Sprite m_ducktapeSprite;
     [SerializeField]
     private Sprite m_handSprite;
+
+    // Wand related objects
     [SerializeField]
     private Sprite m_wandSprite;
+    [SerializeField]
+    private Transform m_wandTipTransform;
+    [SerializeField]
+    private GameObject m_wandStarsPrefab;
 
     public delegate void OnToolChange(ToolType type);
     public static OnToolChange toolChanged;
@@ -71,6 +77,8 @@ public class FixingTool : MonoBehaviour {
 
             switch (m_currentTool)
             {
+                // Wand and hammer use the same animation
+                case ToolType.MAGICWAND:
                 case ToolType.HAMMER:
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -81,8 +89,8 @@ public class FixingTool : MonoBehaviour {
                         m_toolAnimator.SetBool("InUse", false);
                     }
                     break;
+                // Didn't end up putting any animation for the hand.
                 case ToolType.HAND:
-                case ToolType.MAGICWAND:
                     if (Input.GetMouseButtonDown(0))
                     {
                         UseTool();
@@ -101,7 +109,6 @@ public class FixingTool : MonoBehaviour {
                         m_addingItem = false;
                         m_currentAddedItem = null;
                     }
-
                     break;
             }
         }
@@ -175,7 +182,10 @@ public class FixingTool : MonoBehaviour {
                     }
 
                     if (objectFound)
+                    {
+                        PlayProgressionAudio();
                         closestObject.GetComponent<Crack>().IncrementProgression();
+                    }
                 }
                 break;
             case ToolType.HOTGLUE:
@@ -211,6 +221,25 @@ public class FixingTool : MonoBehaviour {
                         }
                     }
                 }
+                break;
+        }
+    }
+
+    private void PlayProgressionAudio()
+    {
+        switch (m_currentTool)
+        {
+            case ToolType.HAMMER:
+                SoundManager.Instance.PlaySound("Hammer" + Random.Range(1, 4));
+                break;
+            case ToolType.MAGICWAND:
+                Instantiate(m_wandStarsPrefab, m_wandTipTransform.position, Quaternion.identity);
+                SoundManager.Instance.PlaySound("WandEffect");
+                break;
+            case ToolType.HAND:
+                SoundManager.Instance.PlaySound("Paper" + Random.Range(1, 6));
+                break;
+            default:
                 break;
         }
     }

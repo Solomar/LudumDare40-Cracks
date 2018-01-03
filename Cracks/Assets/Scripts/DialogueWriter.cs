@@ -81,7 +81,7 @@ public class DialogueWriter : MonoBehaviour {
                         _delayTilNextCharacter += 0.5f;
                         break;
                     default:
-                        SoundManager._instance.PlaySound("Narrate");
+                        SoundManager.Instance.PlaySound("Narrate");
                         break;
                 }
 

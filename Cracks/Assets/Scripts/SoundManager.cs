@@ -69,7 +69,8 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     Sound[] allSounds;
 
-    public static SoundManager _instance = null;
+    private     static SoundManager _instance = null;
+    public      static SoundManager Instance { get { return _instance; } }
 
     private void Awake()
     {
