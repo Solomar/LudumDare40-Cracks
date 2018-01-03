@@ -18,8 +18,3 @@ The most interesting script I had to write because it used the Unity compound co
 
 __DialogueWrite.cs__
 Second time I re-used this script but first time it's in a public git. It's quite straigth forward and worked perfectly by switching a normal UI text to a TextMesh Pro object to do the writing.
-
-
-
-* Post Processing Stack
-* TextMesh Pro
